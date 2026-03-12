@@ -1,0 +1,59 @@
+{% extends "productos/inicio.html" %}
+
+{% block contenido %}
+
+<div class="container mt-5">
+
+<div class="hero">
+
+<h2 class="text-center text-primary mb-4">Lista de Colchones</h2>
+
+<table class="table table-bordered table-hover text-center">
+
+<thead class="table-info">
+
+<tr>
+<th>ID</th>
+<th>Marca</th>
+<th>Modelo</th>
+<th>Altura</th>
+<th>Densidad</th>
+<th>Garantía</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for colchon in lista_colchones %}
+
+<tr>
+<td>{{ colchon.id }}</td>
+<td>{{ colchon.marca }}</td>
+<td>{{ colchon.modelo }}</td>
+<td>{{ colchon.altura }}</td>
+<td>{{ colchon.densidad }}</td>
+<td>{{ colchon.garantia }}</td>
+</tr>
+
+{% empty %}
+
+<tr>
+<td colspan="6">No hay colchones cargados</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+<a href="{% url 'inicio' %}" class="btn btn-secondary">
+Volver
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}

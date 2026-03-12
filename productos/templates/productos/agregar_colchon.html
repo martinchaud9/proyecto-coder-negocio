@@ -1,0 +1,54 @@
+{% extends "productos/inicio.html" %}
+
+{% block contenido %}
+
+<div class="container mt-5">
+
+<div class="hero">
+
+<h1 class="mb-4">Agregar Colchón</h1>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<div class="mb-3">
+{{ form.marca.label_tag }}
+{{ form.marca }}
+</div>
+
+<div class="mb-3">
+{{ form.modelo.label_tag }}
+{{ form.modelo }}
+</div>
+
+<div class="mb-3">
+{{ form.altura.label_tag }}
+{{ form.altura }}
+</div>
+
+<div class="mb-3">
+{{ form.densidad.label_tag }}
+{{ form.densidad }}
+</div>
+
+<div class="mb-3">
+{{ form.garantia.label_tag }}
+{{ form.garantia }}
+</div>
+
+<button type="submit" class="btn btn-primary">
+Guardar Colchón
+</button>
+
+<a href="{% url 'inicio' %}" class="btn btn-secondary">
+Volver
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}

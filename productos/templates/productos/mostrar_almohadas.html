@@ -1,0 +1,53 @@
+{% extends "productos/inicio.html" %}
+
+{% block contenido %}
+
+<div class="container mt-5">
+
+<div class="hero">
+
+<h2 class="text-center text-primary mb-4">Lista de Almohadas</h2>
+
+<table class="table table-bordered table-hover text-center">
+
+<thead class="table-info">
+
+<tr>
+<th>ID</th>
+<th>Marca</th>
+<th>Modelo</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for almohada in lista_almohadas %}
+
+<tr>
+<td>{{ almohada.id }}</td>
+<td>{{ almohada.marca }}</td>
+<td>{{ almohada.modelo }}</td>
+</tr>
+
+{% empty %}
+
+<tr>
+<td colspan="3">No hay almohadas cargadas</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+<a href="{% url 'inicio' %}" class="btn btn-secondary">
+Volver
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}

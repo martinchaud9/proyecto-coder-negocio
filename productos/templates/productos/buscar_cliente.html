@@ -1,0 +1,29 @@
+{% extends "productos/inicio.html" %}
+
+{% block contenido %}
+
+<div class="container mt-5">
+
+<div class="hero">
+
+<h2 class="text-center text-primary mb-4">Buscar Cliente por DNI</h2>
+
+<form method="GET" action="{% url 'buscar_cliente' %}">
+
+{{ form.as_p }}
+
+<button type="submit" class="btn btn-info text-white">
+Buscar
+</button>
+
+<a href="{% url 'inicio' %}" class="btn btn-secondary">
+Volver
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}
