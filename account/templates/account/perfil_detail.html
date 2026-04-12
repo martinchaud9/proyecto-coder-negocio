@@ -1,0 +1,70 @@
+{% extends "productos/inicio.html" %}
+
+{% block titulo %} Mi Perfil {% endblock %}
+
+{% block contenido %}
+<div class="container my-5" style="max-width: 800px;">
+  <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+    <div class="bg-primary py-3">
+      <h2 class="fw-bold mb-0 text-center text-white">Mi Perfil</h2>
+    </div>
+    
+    <div class="card-body p-4">
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center mb-4 mb-md-0">
+          {% if user.avatar %}
+            <img src="{{ user.avatar.url }}" alt="Avatar" class="img-fluid rounded-circle shadow" style="width: 180px; height: 180px; object-fit: cover; border: 4px solid #f8f9fa;">
+          {% else %}
+            <div class="bg-secondary rounded-circle d-inline-flex align-items-center justify-content-center text-white shadow" style="width: 180px; height: 180px; font-size: 4rem;">
+              {{ user.username|first|upper }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="col-md-8">
+          <h3 class="fw-bold text-dark mb-1">{{ user.get_full_name|default:user.username }}</h3>
+          <p class="text-muted mb-4">Usuario N°: <span class="badge bg-info text-dark">{{ user.nro_usuario }}</span></p>
+          
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <p class="mb-1 text-muted small uppercase fw-bold">Nombre Completo</p>
+              <p class="fw-medium">{{ user.first_name|default:"-" }} {{ user.last_name|default:"" }}</p>
+            </div>
+            <div class="col-sm-6">
+              <p class="mb-1 text-muted small uppercase fw-bold">Email</p>
+              <p class="fw-medium">{{ user.email }}</p>
+            </div>
+            <div class="col-sm-6">
+              <p class="mb-1 text-muted small uppercase fw-bold">Dirección</p>
+              <p class="fw-medium">{{ user.direccion|default:"No especificada" }}</p>
+            </div>
+            <div class="col-sm-6">
+              <p class="mb-1 text-muted small uppercase fw-bold">País</p>
+              <p class="fw-medium">{{ user.pais|default:"No especificado" }}</p>
+            </div>
+            <div class="col-12">
+              <p class="mb-1 text-muted small uppercase fw-bold">DNI</p>
+              <p class="fw-medium">{{ user.dni|default:"-" }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <div class="d-flex justify-content-center gap-3">
+        <a href="{% url 'perfil_change' %}" class="btn btn-primary px-4 fw-bold">
+          <i class="bi bi-pencil-square"></i> Editar perfil
+        </a>
+        
+        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-danger px-4">
+            Cerrar sesión
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

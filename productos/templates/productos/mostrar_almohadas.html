@@ -16,6 +16,7 @@
 <th>ID</th>
 <th>Marca</th>
 <th>Modelo</th>
+<th>Acciones</th>
 </tr>
 
 </thead>
@@ -28,6 +29,17 @@
 <td>{{ almohada.id }}</td>
 <td>{{ almohada.marca }}</td>
 <td>{{ almohada.modelo }}</td>
+<td>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="{% url 'almohada_update' almohada.id %}" class="btn btn-sm btn-warning">
+                                Editar
+                            </a>
+
+                            <a href="{%url 'almohada_delete' almohada.id%}" class="btn btn-sm btn-danger">
+                                Eliminar
+                            </a>
+                        </div>
+                    </td>
 </tr>
 
 {% empty %}

@@ -4,55 +4,65 @@
 
 <div class="container mt-5">
 
-<div class="hero">
+    <div class="hero">
 
-<h2 class="text-center text-primary mb-4">Lista de Colchones</h2>
+        <h2 class="text-center text-primary mb-4">Lista de Colchones</h2>
 
-<table class="table table-bordered table-hover text-center">
+        <table class="table table-bordered table-hover text-center">
 
-<thead class="table-info">
+            <thead class="table-info">
+                <tr>
+                    <th>ID</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Altura</th>
+                    <th>Densidad</th>
+                    <th>Garantía</th>
+                    <th>Acciones</th> 
+                </tr>
+            </thead>
 
-<tr>
-<th>ID</th>
-<th>Marca</th>
-<th>Modelo</th>
-<th>Altura</th>
-<th>Densidad</th>
-<th>Garantía</th>
-</tr>
+            <tbody>
+                {% for colchon in lista_colchones %}
+                <tr>
+                    <td>{{ colchon.id }}</td>
+                    <td>{{ colchon.marca }}</td>
+                    <td>{{ colchon.modelo }}</td>
+                    <td>{{ colchon.altura }}</td>
+                    <td>{{ colchon.densidad }}</td>
+                    <td>{{ colchon.garantia }}</td>
+                    
+                    <td>
+                        <div class="d-flex justify-content-center gap-2">
+                            <a href="{% url 'colchon_update' colchon.id %}" class="btn btn-sm btn-warning">
+                                Editar
+                            </a>
+                            
+                            <a href="{% url 'colchon_delete' colchon.id %}" class="btn btn-sm btn-danger">
+                                Eliminar
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">No hay colchones cargados</td> 
+                </tr>
+                {% endfor %}
+            </tbody>
 
-</thead>
+        </table>
 
-<tbody>
+        <div class="mt-4">
+            <a href="{% url 'inicio' %}" class="btn btn-secondary">
+                Volver al Inicio
+            </a>
+            <a href="{% url 'agregar_colchon' %}" class="btn btn-primary">
+                Agregar Nuevo Colchón
+            </a>
+        </div>
 
-{% for colchon in lista_colchones %}
-
-<tr>
-<td>{{ colchon.id }}</td>
-<td>{{ colchon.marca }}</td>
-<td>{{ colchon.modelo }}</td>
-<td>{{ colchon.altura }}</td>
-<td>{{ colchon.densidad }}</td>
-<td>{{ colchon.garantia }}</td>
-</tr>
-
-{% empty %}
-
-<tr>
-<td colspan="6">No hay colchones cargados</td>
-</tr>
-
-{% endfor %}
-
-</tbody>
-
-</table>
-
-<a href="{% url 'inicio' %}" class="btn btn-secondary">
-Volver
-</a>
-
-</div>
+    </div>
 
 </div>
 

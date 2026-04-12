@@ -1,168 +1,85 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Colchonería</title>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<style>
-
-body{
-background-color:#6c757d;
-}
-
-.hero{
-background-color:white;
-padding:60px;
-border-radius:10px;
-margin-top:50px;
-text-align:center;
-box-shadow:0px 0px 10px rgba(0,0,0,0.2);
-}
-
-.hero h1{
-color:#0d6efd;
-}
-
-footer{
-margin-top:120px;
-padding-bottom:40px;
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colchonería</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #6c757d; }
+        .hero {
+            background-color: white;
+            padding: 60px;
+            border-radius: 10px;
+            margin-top: 50px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+        .hero h1 { color: #0d6efd; }
+        footer { margin-top: 120px; padding-bottom: 40px; }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-<div class="container">
-
-<a class="navbar-brand" href="{% url 'inicio' %}">
-Colchonería
-</a>
-
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-<span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse" id="navbarNav">
-
-<ul class="navbar-nav ms-auto">
-
-<li class="nav-item">
-<a class="nav-link" href="{% url 'mostrar_colchones' %}">Colchones</a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link" href="{% url 'mostrar_almohadas' %}">Almohadas</a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link" href="{% url 'mostrar_clientes' %}">Clientes</a>
-</li>
-
-</ul>
-
-</div>
-
-</div>
-
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'inicio' %}">Colchonería</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="{% url 'mostrar_colchones' %}">Colchones</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'mostrar_almohadas' %}">Almohadas</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'mostrar_clientes' %}">Clientes</a></li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        {% if user.is_authenticated %}
+          <li class="nav-item"><span class="nav-link text-info">Hola, {{ user.username }}</span></li>
+          <li class="nav-item">
+            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-outline-danger btn-sm ms-2">Cerrar Sesión</button>
+            </form>
+          </li>
+        {% else %}
+          <li class="nav-item"><a class="btn btn-outline-light btn-sm me-2" href="{% url 'login' %}">Iniciar Sesión</a></li>
+          <li class="nav-item"><a class="btn btn-primary btn-sm" href="{% url 'register' %}">Registrarse</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
 </nav>
 
-<!-- CONTENIDO DINÁMICO -->
-
-{% block contenido %}
-
 <div class="container">
-
-<div class="hero">
-
-<h1>Bienvenido a nuestra Colchonería</h1>
-
-<p class="lead">
-Sistema de gestión de colchones, almohadas y clientes.
-</p>
-
-<p>
-Aquí podrás administrar los productos y la información de tus clientes de forma sencilla.
-</p>
-
-<a href="{% url 'agregar_colchon' %}" class="btn btn-primary mt-3">
-Agregar Colchón
-</a>
-
-<a href="{% url 'agregar_almohada' %}" class="btn btn-primary mt-3">
-Agregar Almohada
-</a>
-
-<a href="{% url 'agregar_cliente' %}" class="btn btn-primary mt-3">
-Agregar Cliente
-</a>
-
-<a href="{% url 'buscar_cliente' %}" class="btn btn-primary mt-3">
-Buscar Cliente
-</a>
-
+    {% block contenido %}
+    <div class="hero">
+        <h1>Bienvenido a nuestra Colchonería</h1>
+        <p class="lead">Sistema de gestión de colchones, almohadas y clientes.</p>
+        <p>Aquí podrás administrar los productos y la información de tus clientes de forma sencilla.</p>
+        <div class="mt-4">
+            <a href="{% url 'agregar_colchon' %}" class="btn btn-primary">Agregar Colchón</a>
+            <a href="{% url 'agregar_almohada' %}" class="btn btn-primary">Agregar Almohada</a>
+            <a href="{% url 'agregar_cliente' %}" class="btn btn-primary">Agregar Cliente</a>
+            <a href="{% url 'buscar_cliente' %}" class="btn btn-primary">Buscar Cliente</a>
+        </div>
+    </div>
+    {% endblock %}
 </div>
-
-</div>
-
-{% endblock %}
-
-<!-- FOOTER -->
 
 <footer class="bg-dark text-light py-4">
-
-<div class="container">
-
-<div class="row text-center text-md-start">
-
-<div class="col-md-3">
-<h5>Dirección</h5>
-<p>Santiago del Estero</p>
-</div>
-
-<div class="col-md-3">
-<h5>Teléfono</h5>
-<p>+54 385 4215686</p>
-<p>+54 385 7654321</p>
-</div>
-
-<div class="col-md-3">
-<h5>Sucursales</h5>
-<p>Salta 22</p>
-<p>Independencia 1130</p>
-</div>
-
-<div class="col-md-3">
-<h5>Marcas</h5>
-<p>Inducol</p>
-<p>Cannon</p>
-<p>King Koil</p>
-<p>Maxiking</p>
-</div>
-
-</div>
-
-<hr class="border-light">
-
-<div class="text-center">
-<p class="mb-0">© 2026 Colchonería - Todos los derechos reservados</p>
-</div>
-
-</div>
-
+    <div class="container">
+        <div class="row text-center text-md-start">
+            <div class="col-md-3"><h5>Dirección</h5><p>Santiago del Estero</p></div>
+            <div class="col-md-3"><h5>Teléfono</h5><p>+54 385 4215686</p></div>
+            <div class="col-md-3"><h5>Sucursales</h5><p>Salta 22</p></div>
+            <div class="col-md-3"><h5>Marcas</h5><p>Inducol, Cannon, King Koil</p></div>
+        </div>
+        <hr class="border-light">
+        <div class="text-center"><p class="mb-0">© 2026 Colchonería - Todos los derechos reservados</p></div>
+    </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

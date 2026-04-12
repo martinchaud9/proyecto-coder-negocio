@@ -1,0 +1,39 @@
+{% extends "productos/base.html" %} {% block contenido %}
+
+<div class="container mt-5">
+
+    <div class="hero">
+
+        <h1 class="mb-4 text-warning">Editar Almohada: {{ object.modelo }}</h1>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="mb-3 text-start">
+                {{ form.marca.label_tag }}
+                {{ form.marca }}
+            </div>
+
+            <div class="mb-3 text-start">
+                {{ form.modelo.label_tag }}
+                {{ form.modelo }}
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-warning">
+                    Actualizar Cambios
+                </button>
+
+                <a href="{% url 'mostrar_almohada' %}" class="btn btn-secondary">
+                    Cancelar
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

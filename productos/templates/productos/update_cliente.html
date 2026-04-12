@@ -1,0 +1,54 @@
+{% extends "productos/base.html" %} {% block contenido %}
+
+<div class="container mt-5">
+
+    <div class="hero">
+
+        <h1 class="mb-4 text-warning">Editar Cliente: {{ object.modelo }}</h1>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="mb-3 text-start">
+                {{ form.dni.label_tag }}
+                {{ form.dni }}
+            </div>
+
+            <div class="mb-3 text-start">
+                {{ form.nombre.label_tag }}
+                {{ form.nombre }}
+            </div>
+
+            <div class="mb-3 text-start">
+                {{ form.apellido.label_tag }}
+                {{ form.apellido }}
+            </div>
+
+            <div class="mb-3 text-start">
+                {{ form.domicilio.label_tag }}
+                {{ form.domicilio }}
+            </div>
+
+            <div class="mb-3 text-start">
+                {{ form.telefono.label_tag }}
+                {{ form.telefono }}
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-warning">
+                    Actualizar Cambios
+                </button>
+
+                <a href="{% url 'mostrar_clientes' %}" class="btn btn-secondary">
+                    Cancelar
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

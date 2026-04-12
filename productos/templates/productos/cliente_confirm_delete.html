@@ -1,0 +1,37 @@
+{% extends "productos/inicio.html" %}
+
+{% block contenido %}
+
+<div class="container mt-5">
+
+    <div class="hero">
+
+        <h1 class="text-danger mb-4">¡Cuidado!</h1>
+        
+        <div class="alert alert-warning">
+            <h3>¿Estás seguro de que quieres eliminar este cliente?</h3>
+            <p class="lead">
+                <strong>DNI:</strong> {{ object.dni }} <br>
+                <strong>Nombre:</strong> {{ object.nombre }}
+                <strong>Apellido:</strong> {{ object.domicilio }}
+            </p>
+            <p class="text-muted">Esta acción no se puede deshacer.</p>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <button type="submit" class="btn btn-danger btn-lg px-5">
+                Sí, Eliminar Permanentemente
+            </button>
+
+            <a href="{% url 'mostrar_clientes' %}" class="btn btn-secondary btn-lg px-5">
+                Cancelar y Volver
+            </a>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
