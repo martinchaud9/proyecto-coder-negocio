@@ -20,7 +20,7 @@ def agregar_colchon(request):
         form = ColchonForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("inicio")
+            return redirect("mostrar_colchones")
     else: 
         form = ColchonForm()
     return render(request, "productos/agregar_colchon.html",{"form": form})
@@ -57,7 +57,7 @@ def agregar_almohada(request):
         form = AlmohadaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("inicio")
+            return redirect("mostrar_almohadas")
     else:
         form = AlmohadaForm()
     return render(request, "productos/agregar_almohada.html", {'form': form})
@@ -97,7 +97,7 @@ def agregar_cliente(request):
         form = ClienteForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("inicio")
+            return redirect("mostrar_clientes")
     else:
         form = ClienteForm()    
     return render(request, "productos/agregar_cliente.html", {'form': form})
@@ -149,3 +149,8 @@ def buscar_cliente(request):
         form = BuscarClienteForm()
 
     return render(request, "productos/buscar_cliente.html", {"form": form})
+
+#A cerca de mi 
+@login_required
+def about(request):
+    return render(request, "productos/about.html")

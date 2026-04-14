@@ -1,0 +1,52 @@
+{% extends "productos/inicio.html" %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-white rounded shadow-sm">
+        <h2 class="mb-0">Nuestro Blog de Descanso</h2>
+        
+        {% if user.is_authenticated %}
+            <a href="{% url 'post_create' %}" class="btn btn-success fw-bold">
+                <i class="bi bi-plus-lg"></i> + Crear Nueva Página
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        {% for post in posts %}
+            <div class="col-12 mb-4">
+                <div class="card shadow-sm border-0">
+                    <div class="row g-0">
+                        {% if post.imagen %}
+                        <div class="col-md-4">
+                            <img src="{{ post.imagen.url }}" class="img-fluid rounded-start h-100" style="object-fit: cover; min-height: 200px;" alt="{{ post.titulo }}">
+                        </div>
+                        {% endif %}
+                        
+                        <div class="col-md-{% if post.imagen %}8{% else %}12{% endif %}">
+                            <div class="card-body d-flex flex-column h-100">
+                                <h3 class="card-title text-primary">{{ post.titulo }}</h3>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ post.subtitulo }}</h6>
+                                <p class="text-secondary small mt-2">
+                                    Publicado por <strong>{{ post.autor }}</strong> | {{ post.fecha|date:"d/m/Y" }}
+                                </p>
+                                
+                                <div class="mt-auto pt-3">
+                                    <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">Leer más</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info text-center py-5">
+                    <h4>No hay páginas aún.</h4>
+                    <p>¡Vuelve pronto para ver nuestras novedades!</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

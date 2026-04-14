@@ -1,0 +1,17 @@
+{% extends "productos/inicio.html" %}
+
+{% block contenido %}
+<div class="bg-white p-4 rounded shadow-sm">
+    <h2>Crear Nuevo Post</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form.media }} 
+        
+        {{ form.as_p }}
+        
+        <button type="submit" class="btn btn-primary">Publicar</button>
+        <a href="{% url 'post_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

@@ -8,6 +8,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("productos.urls")),
     path("account/", include("account.urls")),
+    path('', include('blog.urls')),
+    path('messages/', include('messaging.urls')),
 ]
 
 if settings.DEBUG:

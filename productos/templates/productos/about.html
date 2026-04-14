@@ -1,0 +1,36 @@
+{% extends "productos/inicio.html" %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 bg-white p-5 rounded shadow-sm text-center">
+            <h1 class="display-4 text-primary mb-4">Acerca de mí</h1>
+            
+            <div class="mb-4">
+                <div class="bg-secondary d-inline-block rounded-circle" style="width: 150px; height: 150px;">
+                    <span class="text-white" style="line-height: 150px; font-size: 3rem;">🎓</span>
+                </div>
+            </div>
+
+            <p class="lead">
+                ¡Hola! Soy el desarrollador detrás de esta <strong>Colchonería Online</strong>.
+            </p>
+            <p class="text-start">
+                Mi nombre es Martin Chaud, soy estudiante de la carrera de Ingeniería en informatica en la Universidad catolica de Santiago del estero. Este es mi proyecto final para el curso de Python y Django de CoderHouse. 
+                A lo largo de este desarrollo, implementé sistemas de autenticación, gestión de inventario, un blog con editor enriquecido 
+                y una app de mensajería interna.
+            </p>
+            <p class="text-start">
+                Mi objetivo con este sistema es facilitar la gestión de ventas de colchones y almohadas, permitiendo un control 
+                detallado de clientes y una comunicación fluida entre los administradores del sitio.
+            </p>
+            
+            <hr class="my-4">
+            
+            <div class="mt-4">
+                <a href="{% url 'inicio' %}" class="btn btn-primary">Volver al Inicio</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

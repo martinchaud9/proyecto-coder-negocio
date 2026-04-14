@@ -1,0 +1,31 @@
+{% extends "productos/inicio.html" %}
+
+{% block contenido %}
+<article>
+    <h1>{{ post.titulo }}</h1>
+    {{ post.subtitulo }}</p>
+    <hr>
+    {% if post.imagen %}
+        <img src="{{ post.imagen.url }}" style="max-width: 500px;">
+    {% endif %}
+    
+    <div class="content">
+        {{ post.contenido|safe }}
+    </div>
+    
+    <p>Autor: {{ post.autor }} | Fecha: {{ post.fecha }}</p>
+    <a href="{% url 'post_list' %}">Volver al listado</a>
+    <hr>
+    <p class="text-muted small">Escrito por: <strong>{{ post.autor }}</strong></p>
+    
+    <div class="mt-3">
+        <a href="{% url 'post_list' %}" class="btn btn-outline-secondary">Volver</a>
+        
+        {% if user.is_authenticated %}
+            <a href="{% url 'post_update' post.id %}" class="btn btn-warning">Editar</a>
+            <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Borrar</a>
+        {% endif %}
+    </div>
+</article>
+</article>
+{% endblock %}

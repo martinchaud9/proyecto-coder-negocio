@@ -1,0 +1,32 @@
+{% extends "productos/inicio.html" %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-white rounded shadow-sm">
+        <h2 class="mb-0">Mi Bandeja de Entrada</h2>
+        <a href="{% url 'send_message' %}" class="btn btn-primary fw-bold">
+            + Enviar Nuevo Mensaje
+        </a>
+    </div>
+
+    <div class="list-group shadow-sm">
+        {% for message in messages %}
+            <div class="list-group-item list-group-item-action {% if not message.is_read %}border-start border-primary border-4{% endif %}">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1 text-primary">De: {{ message.sender.username }}</h5>
+                    <small class="text-muted">{{ message.timestamp|date:"d/m/Y H:i" }}</small>
+                </div>
+                <p class="mb-1 mt-2" style="font-size: 1.1rem;">{{ message.content }}</p>
+                {% if not message.is_read %}
+                    <span class="badge bg-info text-dark">Nuevo</span>
+                {% endif %}
+            </div>
+        {% empty %}
+            <div class="alert alert-light text-center py-5 border">
+                <h4>No tienes mensajes nuevos.</h4>
+                <p class="text-muted">Cuando alguien te escriba, aparecerá aquí.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

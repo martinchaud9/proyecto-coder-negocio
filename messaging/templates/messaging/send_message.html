@@ -1,0 +1,49 @@
+{% extends "productos/inicio.html" %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Enviar Mensaje</h3>
+                </div>
+                <div class="card-body bg-white">
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="id_receiver" class="form-label fw-bold">Para:</label>
+                            <p class="text-muted small">Selecciona el usuario al que quieres contactar.</p>
+                            {{ form.receiver }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_content" class="form-label fw-bold">Mensaje:</label>
+                            {{ form.content }}
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">Enviar Mensaje</button>
+                            <a href="{% url 'inbox' %}" class="btn btn-outline-secondary">Volver a Recibidos</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Estilizamos un poco los campos de Django para que no se vean tan simples */
+    select, textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
+    textarea {
+        height: 150px;
+    }
+</style>
+{% endblock %}

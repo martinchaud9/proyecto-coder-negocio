@@ -24,4 +24,7 @@ urlpatterns = [
     path("cliente/editar/<int:pk>/", ClienteUpdateView.as_view(), name="cliente_update"),
     path("cliente/eliminar/<int:pk>/", ClienteDeleteView.as_view(), name="cliente_delete"),
     
+    #A cerca de mi
+    path('about/', about, name='about'),
+    
 ]

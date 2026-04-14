@@ -1,15 +1,11 @@
 {% extends "productos/inicio.html" %}
 
 {% block contenido %}
-
 <div class="container mt-5">
-
     <div class="hero">
-
         <h2 class="text-center text-primary mb-4">Lista de Colchones</h2>
 
         <table class="table table-bordered table-hover text-center">
-
             <thead class="table-info">
                 <tr>
                     <th>ID</th>
@@ -21,7 +17,6 @@
                     <th>Acciones</th> 
                 </tr>
             </thead>
-
             <tbody>
                 {% for colchon in lista_colchones %}
                 <tr>
@@ -31,16 +26,10 @@
                     <td>{{ colchon.altura }}</td>
                     <td>{{ colchon.densidad }}</td>
                     <td>{{ colchon.garantia }}</td>
-                    
                     <td>
                         <div class="d-flex justify-content-center gap-2">
-                            <a href="{% url 'colchon_update' colchon.id %}" class="btn btn-sm btn-warning">
-                                Editar
-                            </a>
-                            
-                            <a href="{% url 'colchon_delete' colchon.id %}" class="btn btn-sm btn-danger">
-                                Eliminar
-                            </a>
+                            <a href="{% url 'colchon_update' colchon.id %}" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="{% url 'colchon_delete' colchon.id %}" class="btn btn-sm btn-danger">Eliminar</a>
                         </div>
                     </td>
                 </tr>
@@ -50,20 +39,12 @@
                 </tr>
                 {% endfor %}
             </tbody>
-
         </table>
 
         <div class="mt-4">
-            <a href="{% url 'inicio' %}" class="btn btn-secondary">
-                Volver al Inicio
-            </a>
-            <a href="{% url 'agregar_colchon' %}" class="btn btn-primary">
-                Agregar Nuevo Colchón
-            </a>
+            <a href="{% url 'inicio' %}" class="btn btn-secondary">Volver al Inicio</a>
+            <a href="{% url 'agregar_colchon' %}" class="btn btn-primary">Agregar Nuevo Colchón</a>
         </div>
-
     </div>
-
 </div>
-
 {% endblock %}

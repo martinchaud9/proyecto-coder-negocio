@@ -2,25 +2,40 @@
 
 Aplicacion web desarrollada para gestion de productos(colchones y almohadas) y clientes para una colchoneria
 Con respecto a los modelos:
-Desde la pagina inicio se puede acceder a las diferentes funcionalidades
-En la parte superior derecha se encuentra una barra de navegacion la cual ofrece los siguientes accesos:
-Colchones -> Lista de colchones registrados
-Almohadas -> Lista de almohadas registradas
-Clientes -> Lista de clientes registrados
-Para acceder se debe hacer clic sobre alguno de los tres botones
+Desde la página inicio se puede acceder a las diferentes funcionalidades. En la parte superior derecha se encuentra una barra de navegación la cual ofrece los siguientes accesos:
 
-En el centro de la pantalla principal se encuentra una descripcion junto con botones para realizar las funciones de registrar un nuevo colchon, almohada o cliente, ademas tambien se encuentra el boton buscar cliente para acceder a la funcion de busqueda de un cliente por DNI
+Colchones: Lista de colchones registrados.
 
-Con respecto a la funcion de busqueda utilce 2 htmls uno para la pagina de busqueda y otra para la pagina cuando se muestran los resultados
+Almohadas: Lista de almohadas registradas.
 
-Orden para acceder a la aplicacion:
-1. Acceder a la pagina de inicio
-2. Ir hacia agregar colchon y registrar un nuevo colchon
-3. Al registrar un nuevo colchon inmediatamente lleva nuevamente al inicio
-4. Repetir el paso 2 pero con almohadas
-5. Luego, registrar un nuevo cliente
-6. Acceder a Mostrar Colchones, almohadas y clientes para verificar que se registraron correctamente.
-7. En la pagina de mostrar colchones y almohadas incorpore la busqueda por marca de los respectivos productos
-8. Acceder a la busqueda de clientes haciendo clic en el boton correspondiente, y buscar un cliente registrado por su DNI
+Clientes: Lista de clientes registrados.
 
+Blog (Pages): Sección de artículos sobre productos y descanso con texto enriquecido e imágenes.
 
+Mensajes: Sistema para enviarse mensajes entre usuarios registrados.
+
+About: Una sección con información sobre el dueño de la página y los objetivos del proyecto.
+
+Seguridad y Usuarios
+Para este proyecto implementé un sistema de usuarios avanzados. Para acceder a la lista de clientes, colchones, almohadas o al blog, el usuario sí o sí tiene que estar logueado. Si un usuario intenta entrar a estas secciones sin haber iniciado sesión, la aplicación lo lleva directamente a la pantalla de Login o le da la opción de Registrarse.
+
+Cada usuario tiene su propio Perfil, donde puede cargar su nombre, apellido, biografía y un Avatar (foto de perfil). También agregué la opción de cambiar la contraseña y editar los datos del perfil desde ahí.
+
+Orden para probar la aplicación:
+1. Acceder a la página de inicio.
+
+2. Ir a Registrarse para crear un usuario nuevo.
+
+3. Iniciar sesión con los datos creados.
+
+4. Una vez logueado, ir hacia Agregar Colchón y registrar uno. Ahora, al terminar, el sistema te lleva directo a la lista de colchones.
+
+5. Repetir el paso con almohadas y clientes.
+
+6. Entrar al Blog (Pages) para ver los artículos o crear uno nuevo con imagen.
+
+7. Probar la Mensajería enviando un mensaje a otro usuario.
+
+8. Entrar al Perfil para subir un Avatar o editar la biografía.
+
+9. Verificar la búsqueda de cliente por DNI.
