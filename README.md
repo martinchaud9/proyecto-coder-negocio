@@ -39,3 +39,5 @@ Orden para probar la aplicación:
 8. Entrar al Perfil para subir un Avatar o editar la biografía.
 
 9. Verificar la búsqueda de cliente por DNI.
+
+VIDEO: https://drive.google.com/file/d/1l54pMpYd7WIBdW3yM8S_IrN9xagBAuGr/view?usp=sharing
